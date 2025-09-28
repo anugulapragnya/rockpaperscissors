@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rockpaperscissors</title>
+    <style>
+        .container{
+            width:100vw;
+            height:100vh;
+            background-color:antiquewhite;
+            border: 2px saddlebrown;
+            display:flex;
+            flex-direction:column;
+              justify-content:space-around;
+            align-items: center;
+}
+   
+        .box{
+            width:100%;
+            height:40%;
+            
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+         gap:20px;
+            align-items: center;
+}
+        .box img{
+            width:20%;
+            height:70%;
+            border:2px solid black;
+             border-radius:50%;
+        }
+        .names{
+            width:100%;
+            height:10%;
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+  
+        }
+        .names h3
+        {
+            width:20%;
+            height:10%;
+        }
+        .box2{
+            width:70%;
+            height:20%;
+            justify-content: center;
+          
+            display:flex;
+            flex-direction: row;
+            gap:40px;
+  align-items: center;
+        }
+        .box3{
+            width:70%;
+            height:10%;
+            font-size: 20px;
+            font-weight: 900;
+            color: black;
+            display:flex;
+            flex-direction:row;
+            gap:60px;
+               justify-content: center;
+               justify-items: center;
+        }
+        .myscore{
+            width:15%;
+            height:90%;
+            color:rgb(20, 19, 19);
+            background-color: rgb(234, 228, 233);
+              font-weight: 600;
+              font-size: 60px;;
+     text-align:center ;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+         .compscore{
+             width:15%;
+            height:90%;
+               justify-content: center;
+               justify-items: center;
+            color:rgb(21, 20, 20);
+            align-items: center;
+              border: 2px solid black;
+              font-weight:600;
+              font-size: 60px;;
+     text-align:center ;
+       background-color: rgb(235, 234, 232);
+            border-radius: 50%;
+        }
+        
+        .heading{
+          
+            width:70%;
+            height:20%;
+           display:flex;
+           justify-content: center;
+       
+        }
+       
+        .but{
+            width:100%;
+            height:100%;
+        align-content: center;
+         justify-items: center;
+        font-weight:900 ;
+        font-size: larger;
+            justify-items: center;
+            align-self: center;
+            height:30%;
+            padding: 2px ;
+            border:2px solid black;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+
+            <img src="rock.png" id="rock" alt="rock">
+            <img src="paper.png" id="paper" alt="paperk">
+              <img src="scissor.png" id="scissor" alt="scissor">
+        </div>
+        <div class="names">
+            <h3>Rock</h3>
+            <h3>Paper</h3>
+            <h3>Scissor</h3>
+            </div>
+        <div class="box2">
+            <div class="myscore">0</div> 
+            
+            <div class="compscore">0</div>
+
+
+        </div>
+        <div class="box3">
+            <p class="p">myscore</p>
+            <p class="p">compscore</p>
+        </div>
+
+    <div class="heading">
+                     
+                       <p class="but">start</p>
+    </div>
+      </div>
+    <script>
+          
+          let arr=["rock","paper","scissor"];
+          let comp=0;
+          let me=0;
+          let n=10;
+          let i=0;
+          function num1(){
+       
+          let num = Math.floor(Math.random() * 3) ;
+            return num;
+            
+          
+
+          }
+
+          
+           document.getElementById("rock").addEventListener("click",()=>{
+            
+                let num= parseInt(num1());
+          document.getElementById(arr[num]).style.borderBlockColor = " ";
+       
+             if(arr[num]==="rock"){
+
+                document.getElementById(arr[num]).style.borderBlockColor="yellow";
+                 document.getElementsByClassName("but")[0].innerHTML=`try again  ${arr[num]}`;
+                  let sound = new Audio("wrong.mp3");
+    sound.play();
+         } 
+        
+            else if(arr[num]==="paper"){
+
+                   document.getElementById(arr[num]).style.borderBlockColor="red";
+                   document.getElementsByClassName("but")[0].innerHTML=`you lost ${arr[num]}`;
+                   comp++;
+                    document.getElementsByClassName("compscore")[0].innerHTML=comp;
+
+                     let sound = new Audio("wrong.mp3");
+    sound.play();
+          } 
+             else if(arr[num]==="scissor"){
+                   document.getElementById(arr[num]).style.borderBlockColor="green";
+                   document.getElementsByClassName("but")[0].innerHTML=`you won ${arr[num]}`;
+                    me++;
+                     document.getElementsByClassName("myscore")[0].innerHTML=me;
+                      let sound = new Audio("bubble.mp3");
+    sound.play();
+          } 
+          
+         });
+          
+          document.getElementById("paper").addEventListener("click",()=>{
+         
+                  let num= parseInt(num1());
+             document.getElementById(arr[num]).style.borderBlockColor = " ";
+         
+             if(arr[num]==="rock"){
+
+                document.getElementById(arr[num]).style.borderBlockColor="green";
+                 document.getElementsByClassName("but")[0].innerHTML=`you won ${arr[num]}`;
+                 me++;
+                  document.getElementsByClassName("myscore")[0].innerHTML=me;
+                   let sound = new Audio("bubble.mp3");
+    sound.play();
+         } 
+        
+            else if(arr[num]==="paper"){
+
+                   document.getElementById(arr[num]).style.borderBlockColor="yellow";
+                   document.getElementsByClassName("but")[0].innerHTML=`try again ${arr[num]}`;
+                    let sound = new Audio("wrong.mp3");
+    sound.play();
+
+          } 
+             else if(arr[num]==="scissor"){
+                   document.getElementById(arr[num]).style.borderBlockColor="red";
+                   document.getElementsByClassName("but")[0].innerHTML=`you lost ${arr[num]}`;
+                    comp++;
+                     document.getElementsByClassName("compscore")[0].innerHTML=comp;
+                      let sound = new Audio("wrong.mp3");
+    sound.play();
+             }
+             
+             });
+          
+         document.getElementById("scissor").addEventListener("click",()=>{
+             let sound = new Audio("wrong.mp3");
+    sound.play();
+               let num= parseInt(num1());
+document.getElementById(arr[num]).style.borderBlockColor = " ";
+        
+             if(arr[num]==="rock"){
+
+                document.getElementById(arr[num]).style.borderBlockColor="red"; 
+                 document.getElementsByClassName("but")[0].innerHTML=`you lost ${arr[num]}`;
+                 comp++;
+                  document.getElementsByClassName("compscore")[0].innerHTML=comp;
+                   let sound = new Audio("wrong.mp3");
+    sound.play();
+         } 
+        
+            else if(arr[num]==="paper"){
+
+                   document.getElementById(arr[num]).style.borderBlockColor="green";
+                   document.getElementsByClassName("but")[0].innerHTML=`you won ${arr[num]}`;
+
+                   me++;
+                    document.getElementsByClassName("myscore")[0].innerHTML=me;
+                     let sound = new Audio("bubble.mp3");
+    sound.play();
+
+          } 
+             else if(arr[num]==="scissor"){
+                   document.getElementById(arr[num]).style.borderBlockColor="yellow";
+                   document.getElementsByClassName("but")[0].innerHTML=`try again ${arr[num]}`;
+                    let sound = new Audio("wrong.mp3");
+    sound.play();
+                    
+          } 
+           
+         });
+        
+      
+       
+
+          
+    </script>
+</body>
+</html>
